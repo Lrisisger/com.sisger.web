@@ -1,0 +1,162 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+/* CSS DA PÁGINA PRINCIPAL */
+:root {
+    --default_blue: #626ABA;
+    --default_black: #333333;
+    --default_white: #DBE0EA;
+    --task_concluded: #71B15A;
+    --task_paused: #DFBD0C;
+    --task_progress: #17A1FA;
+    --task_overdue: #E05D5D;
+}
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+/* Container de titulo*/
+.head {
+    background-color: var(--default_blue);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 80px;
+}
+.menu-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 15px;
+    background-color: #D9D9D9;
+    height: 61px;
+    width: 61px;
+    cursor: pointer;
+}
+
+
+
+.button-head {
+    position: absolute;
+    left: 0;
+    margin: 0 35px;
+}
+
+.button-head-inverse {
+    position: absolute;
+    right: 0;
+    margin: 0 35px;
+}
+
+.title h1 {
+    color: #fff;
+    font-size: 40px;
+    font: 700;
+}
+
+/*Barra lateral de navegação*/
+aside {
+    top: 0;
+    left: 0;
+    position: fixed;
+    height: 100%;
+    width: 0px;
+    overflow: hidden;
+    transition: 1s all;
+    background-color: var(--default_black);
+    z-index: 99;
+
+}
+
+.container-blue {
+    width: 130px;
+    height: 100%;
+    background-color: var(--default_blue);
+}
+
+.list-menu {
+    top: 0;
+    position: absolute;
+    z-index: 99;
+    margin: 30px 60px;
+    list-style: none;
+    transition: 1s all;
+}
+
+.list-menu li {
+    display: flex;
+    align-items: center;
+    width: 220px;
+    margin: 20px 0;
+    cursor: pointer;
+}
+
+.list-menu li h3 {
+    margin-left: 40px;
+    color: #fff;
+}
+
+/*Tela escura do modal*/
+
+.dark{
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    background-color: rgba(0, 0, 0, .5);
+    transition: all .8s ;
+    opacity: 1;
+}
+
+/*input configurações*/
+
+.input-area {
+    border: 1px solid #b4b4b4;
+    border-radius: 20px;
+    width: 340px;
+    height: 50px;
+    padding: 16px;
+    margin: 8px  0 4px 0;
+    transition: 0.3s;
+}
+
+.input-area:hover{
+    border: 1px solid #004cbd;
+}
+
+.input-area:focus{
+    border: 0.5px solid #004cbd;
+    box-shadow: 0 0 0 0.2rem rgba(0, 76, 189, 0.25);
+}
+
+input:focus {
+    outline: none;
+}
+
+a{
+    text-decoration: none;
+    color: #0057da;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 8px 0;
+    transition: 0.5s;
+}
+
+a:hover{
+    color: #002157;
+}
+
+.aviso, #aviso{
+    color: #f00;
+    margin-left: 15px;
+    font-size: 14px;
+    font: 800;  
+  }
+
+
+

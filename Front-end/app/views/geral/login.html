@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../../public/css/general/main.css">
+    <link rel="stylesheet" href="../../../public//css/general/login.css">
+    <link rel="shortcut icon" href="../../../public/img/svgs/favi.png" type="image/x-icon">
+    <title>SISGER</title>
+</head>
+
+<body>
+
+    <main>
+        <div class="logo-sec">
+            <img src="../../../public/img/login/logo.svg" class="logo-img">
+        </div>
+        <div class="title-text">
+            Entrar
+        </div>
+        <div class="login-form">
+
+
+            <div id="input-login">
+                <div class="email ">
+                    <input type="email" name="email" placeholder="E-Mail" id="email" class="input-area">
+                </div>
+                <div class="senha ">
+                    <input type="password" name="senha" placeholder="Senha..." id="senha" class="input-area">
+                </div>
+                <div id="aviso-login">
+
+                </div>
+            </div>
+            <div class="colab text-btn">
+                <a href="../adm/singUp.php">Cadastre-se</a>
+            </div>
+            <div class="submit-btn btn">
+                <button name="submit" id="login-action">Entrar</button>
+            </div>
+
+
+        </div>
+    </main>
+    <script src="../../jsRequests/urlBase.js"></script>
+    
+    <script src="../../jsRequests/login.js"></script>
+    <script>
+        const tokenLogin = localStorage.getItem("token")
+        if (tokenLogin != null && tokenLogin != "") {
+            window.location.assign("./../adm/control.html");
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../../public/css/adm/control.css">
+    <link rel="stylesheet" href="../../../public/css/general/main.css">
+    
+    <link rel="stylesheet" href="../../../public/css/general/loader.css">
+    <link rel="shortcut icon" href="../../../public/img/svgs/favi.png" type="image/x-icon">
+    <title>SISGER</title>
+</head>
+
+<body>
+    <div class="dark-load" id="dark-load"><div class="loader"></div></div>
+    
+
+    <header class="head">
+        <div class="menu-button button-head" onclick="changeAside()">
+            <img src="../../../public/img/icons/list.svg" alt="menu">
+        </div>
+
+        <div class="title">
+            <h1>CENTRAL DE CONTROLE</h1>
+        </div>
+    </header>
+
+
+    
+    <aside>
+
+        <div class="container-blue">
+
+        </div>
+
+        <ul class="list-menu">
+            <li onclick="changeAside()">
+                <div class="menu-button ">
+                    <img src="../../../public/img/icons/list.svg" alt="">
+                </div>
+                <h3>Menu</h3>
+            </li>
+
+            <a href="../geral/conta.html">
+                <li>
+                    <div class="menu-button">
+                        <img src="../../../public/img/icons/person.svg" alt="">
+                    </div>
+
+                    <h3>Conta</h3>
+                </li>
+            </a>
+
+            <a href="participantes.html">
+                <li>
+                    <div class="menu-button">
+                        <img style="height:30px;"  src="../../../public/img/icons/people.svg" alt="">
+                    </div>
+
+                    <h3>Participantes</h3>
+                </li>
+            </a>    
+            
+            <a href="setor.html">
+                <li>
+                    <div class="menu-button">
+                        <img style="height:30px;"  src="../../../public/img/icons/setor.svg" alt="">
+                    </div>
+
+                    <h3>Setores</h3>
+                </li>
+            </a>  
+
+            <a href="../geral/logout.html">
+                <li>
+                    <div class="menu-button">
+                        <img src="../../../public/img/icons/logout.svg" alt="">
+                    </div>
+
+                    <h3>Logout</h3>
+                </li>
+            </a>
+        </ul>
+    </aside>
+    <!-- NAV BAR -->
+
+    <main>
+        <section class="sector" id="sector">
+           
+               
+        
+                        
+        
+           
+                <div class="container-inst" id="container-inst" style="display: none;">
+                    <div class="title">
+                        <h2>Instruções</h2>
+                    </div>
+
+                    <div class="cont">
+                        <p>Ao entrar pela primeira vez, inicie criando os setores da sua empresa. Em seguida, adicione os participantes da empresa, ou seja, colaboradores e administradores.</p>
+
+
+                        <p>Vá para a seção "Setores". Crie setores relevantes para a sua empresa (por exemplo: Vendas, Marketing, Desenvolvimento).</p>
+
+                        <p>Acesse a seção "Participantes". Adicione colaboradores e administradores à sua equipe.</p>
+
+                        <p>Logo após, volte para a Central de controle. Crie uma nova tarefa, especificando título, descrição e delegue a tarefa ao membro específico. Os moderadores também podem criar e delegar tarefas.</p>
+
+                       
+                    </div>
+                </div>
+          
+          
+
+        </section>
+
+
+    </main>
+
+    <div class="dark">
+        <div class="modal-new-task">
+            <div class="head-task">
+                <h3>Nova tarefa...</h3>
+                <div onclick="handleModalNewTask()" class="back">                    
+                    <img  src="../../../public/img/svgs/arrow_back.svg" alt="">
+                </div>
+            </div>
+
+            <form method="post">
+                <input type="hidden" value='' name='tokenSetor' id="tokenSetor">
+
+                <label>
+                    <h4>Responsável</h4>
+                    <select name="name" class="input-area input-model" id="select-employees">
+                       
+                            
+                        
+                    </select>
+                </label>
+
+                <label>
+                    <h4>Titulo da tarefa</h4>
+                    <input type="text" name="task_title" id="task-title" class="input-area input-model" maxlength="20">
+                </label>
+
+                <label>
+                    <h4>Prazo da tarefa</h4>
+                    <div class="input-container">
+                        <input type="date" name="begin_date" id="initial-date" class="input-area input-model">
+                        <input type="date" name="last_date" id="final-date" class="input-area input-model">
+                    </div>
+                </label>
+
+                <label>
+                    <h4>Descrição da tarefa</h4>
+                    <textarea style="resize: none; height: 100px; border-radius: 5px;" type="text" name="task_description" id="description"  class="input-area input-model"> </textarea>
+                </label>
+
+                <div type="submit" id="adicionar" class="btn-modal">Adicionar</div>
+            </form>
+        </div>
+
+        <div class="modal-task" >
+            <div id="container-title" class="head-task ">
+                <h3 id="task-title-modal"></h3>
+                <div onclick="handleModalTask(false)" class="back">                    
+                    <img  src="../../../public/img/svgs/arrow_back.svg" alt="">
+                </div>
+            </div>
+
+            <div class="modal-task-body">
+                <div class="colab">
+                    
+                    <div class="container-title-del">
+                        <h4 class="task-title">Responsável</h4>
+                        <a onclick="delTask()" style="cursor: pointer;"><img src="../../../public/img/icons/delete.svg" alt=""></a>
+                    </div>
+                    <div id="task-name" class="container-info">
+                        
+                    </div>
+                </div>
+
+                <div class="date">
+                    <h4 class="task-title">Prazo da tarefa</h4>
+                    <div class="container-date">
+                        <div id="task-dataInicial" class="container-info">
+                          
+                        </div>
+
+                        <div id="task-dataFinal" class="container-info">
+                           
+                        </div>
+                    </div>
+                </div>
+
+                <div class="status">
+                    <div>
+                        <h4 class="task-title" >Status</h4>
+                        <div  id="task-status" class="container-info" style="color: #fff;"></div>
+                    </div>
+
+                </div>
+
+                <div class="desc">
+                    <h4 class="task-title">Descrição da  tarefa</h4>
+                    <div id="task-descricao" class="container-info"></div>
+                </div>
+
+                <div class="obs">
+                    <h4 class="task-title">Observações</h4>
+                    <div id="task-mensagem" class="container-info" style="height: 80px; align-items: start; overflow-y:scroll;"></div>
+                </div>
+            </div>
+        </div>
+
+        <div id="del-task" class="del-task">
+            <div class="header">
+                <h2>Tem certeza que deseja excluir?</h2>
+                <img onclick="delTask()" class="close-modal" src="../../../public/img/svgs/arrow_back.svg" alt="">
+            </div>
+
+            <div class="modal-container">
+                <form method="post">
+                   <input type="hidden" name="idTask" id="idTask" value="0">     
+
+                    <input type="password" name="senha" class="info" id="passDelTask" placeholder="Senha do usuário">
+                    <span class='aviso' id="aviso-deleta-task" style="display: none;">Senha Incorreta!</span>
+                    <div style="display: flex;">
+                        <div style="margin-left: 8px; display: flex; justify-content: center;" id="del-confirma" class="button-enviar" >Sim</div>
+                        <div style="margin-left: 8px; display: flex; justify-content: center;" class="button-enviar" onclick="delTask()">Não</div>
+                    </div>
+                
+                </form>
+            </div>
+        </div>
+
+      
+    </div>
+
+    <script>console.log(localStorage.getItem("token"))</script>
+    <script src="./../../jsRequests/urlBase.js"  ></script> 
+    <script src="./../../jsRequests/auth.js"  ></script>
+    <script src="./../../jsRequests/control/controlRequest.js"></script>
+    <script src="./../../jsRequests/control/deletaTask.js"></script>
+    <script src="./../../jsRequests/control/newTask.js"></script>
+    <script src="../../../public/js/adm/control.js"></script>
+    <script src="../../../public/js/general/main.js"></script>
+    
+
+</body>
+
+</html>

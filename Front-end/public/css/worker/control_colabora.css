@@ -1,0 +1,233 @@
+/* CSS DA PÁGINA CENTRAL DE COLABORADOR (ONDE ELE RECEBE AS ATIVIDADES) */
+
+:root {
+    --default_blue: #626ABA;
+    --default_black: #333333;
+    --default_white: #DBE0EA;
+    --task_concluded: #71B15A;
+    --task_paused: #DFBD0C;
+    --task_progress: #17A1FA;
+    --task_overdue: #E05D5D;
+}
+main {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+
+label {
+    font-weight: 500;
+    font-size: 18px;
+}
+
+input,
+textarea {
+    border-radius: 24px;
+    border: none;
+    background-color: #DBE0EA;
+    color: black;
+}
+
+.cardTarefa {
+    background-color: #e8e5e5;
+    border-radius: 20px;
+    min-width: 25%;
+}
+
+.titleTarefa {
+    font-size: 1.7em;
+    font-weight: 600;
+    color: white;
+}
+
+.headTask{
+    position: relative;
+    width: 100%;
+    border-radius: 20px 20px 0 0;
+    padding: 5%;
+}
+
+.inputArea {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: start;
+    padding: 10px 16px;
+}
+
+
+.inputArea input, .inputArea textarea{
+    font-size: 16px;
+}
+
+
+.respon input {
+    width: 100%;
+    padding: 8px;
+    font-size: 17px;
+}
+
+.prazo input {
+    padding: 8px;
+}
+
+.status input {
+    padding: 8px;
+    color: #fff;
+}
+
+
+.descricao textarea {
+    padding: 8px;
+    width: 100%;
+    min-height: 115px;
+    resize: vertical;
+    text-align: justify;
+}
+
+.observ textarea {
+    padding: 8px;
+    width: 100%;
+    min-height: 115px;
+    resize: vertical;
+    text-align: justify;
+}
+
+.observ textarea::-webkit-scrollbar, #input-mensagem::-webkit-scrollbar {
+    width: 8px; 
+    box-sizing:content-box;
+    background-color: #a29e9e;
+    border-radius: 20px;  
+  }
+  
+
+  
+.observ textarea::-webkit-scrollbar-thumb, #input-mensagem::-webkit-scrollbar-thumb {
+    background-color: var(--default_blue);    
+    border-radius: 20px;       
+    margin-left: 15px;
+
+}
+
+
+
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.button{
+    color: white;
+    background-color: #626ABA;
+    padding: 8px;
+    font-size: 1em;
+    border: none;
+    border-radius: 18px;
+    width: 25%;
+    margin: 12px;
+    transition: 0.2s;
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.buttons a:hover {
+    background-color: #8589b1;
+}
+
+/*modal de confirmação*/
+
+.modal-obs{
+    display: flex;
+    flex-direction: column;
+    height: 300px;
+    width: 400px;
+    border-radius: 15px;
+    overflow: hidden;
+    background-color: #fff;
+}
+.header{
+    background-color: var(--default_blue);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 50px;
+    color: #fff;
+    padding: 20px;
+}
+.modal-container{
+    padding: 20px;
+}
+.modal-container form{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+
+.modal-container .info{
+    background-color: #DBE0EA;
+    border: none;
+    margin-bottom: 20px;
+    height: 40px;
+    width: 80%;
+    border-radius: 15px;
+    padding: 20px;
+    font-size: 16px;
+
+}
+
+.button-enviar{
+    border: none;
+    background-color: #4A7DFF;
+    color: #fff;
+    font: bold;
+    font-size: 20px;
+    height: 35px;
+    width: 200px;
+    border-radius: 15px;
+    margin-top: 20px;
+    cursor: pointer;
+    transition: .5s all;
+}
+
+.button-enviar:hover{
+    background-color: #95b1f8;
+}
+
+.close-modal{
+    cursor: pointer;
+}
+
+/*classes que mudam a cor da tarefa de acordo com o status*/
+
+
+
+.cor-naoIniciada{
+    background-color: #C8CBC7;
+}
+.cor-emAndamento{
+    background-color:var(--task_progress);
+}
+.cor-pausada{
+    background-color:var(--task_paused);
+}
+.cor-atrasada{
+    background-color:var(--task_overdue);
+}
+.cor-finalizada{
+    background-color:var(--task_concluded) ;
+}
+
+.mensage-send textarea{
+    padding: 15px; 
+    font-size: 16px;
+    border-radius: 0px;
+}
