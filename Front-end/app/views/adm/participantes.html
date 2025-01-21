@@ -6,12 +6,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="../../../public/css/adm/participantes.css">
   <link rel="stylesheet" href="../../../public/css/general/main.css">
+  <link rel="stylesheet" href="../../../public/css/general/loader.css">  
   <link rel="shortcut icon" href="../../../public/img/svgs/favi.png" type="image/x-icon">
   <title>SISGER</title>
 </head>
 
-<body>
-
+<body style="padding-bottom: 50px;">
+  <div class="dark-load" id="dark-load" style="display: flex;"><div class="loader"></div></div>
   <header class="head">
     <div class="menu-button button-head" onclick="changeAside()">
       <img src="../../../public/img/icons/list.svg" alt="menu">
@@ -38,7 +39,7 @@
         <h3>Menu</h3>
       </li>
 
-      <a href="control.php">
+      <a href="control.html">
         <li>
           <div class="menu-button">
             <img style="height:30px;" src="../../../public/img/icons/central.svg" alt="">
@@ -48,7 +49,7 @@
         </li>
       </a>
 
-      <a href="../geral/conta.php">
+      <a href="../geral/conta.html">
         <li>
           <div class="menu-button">
             <img src="../../../public/img/icons/person.svg" alt="">
@@ -58,7 +59,7 @@
         </li>
       </a>
 
-      <a href="setor.php">
+      <a href="setor.html">
         <li>
           <div class="menu-button">
             <img style="height:30px;" src="../../../public/img/icons/setor.svg" alt="">
@@ -68,7 +69,7 @@
         </li>
       </a>
 
-      <a href="../worker/control_colabora.php">
+      <a href="../worker/control_colabora.html">
         <li>
           <div class="menu-button">
             <img style="height:30px;" src="../../../public/img/icons/tarefas.svg" alt="">
@@ -78,7 +79,7 @@
         </li>
       </a>
 
-      <a href="../../services/logoutAction.php">
+      <a href="../geral/logout.html">
         <li>
           <div class="menu-button">
             <img src="../../../public/img/icons/logout.svg" alt="">
@@ -92,30 +93,15 @@
 
   <main>
 
-
-
-
     <div class="container-add">
-      <div class="botao" onclick="newUser('new', false)">
+      <div class="botao" onclick="newUser()">
         ADICIONAR PARTICIPANTES
       </div>
     </div>
 
-    <div class="container-part">
+    <div class="container-part" id="container-part">
     
-      <div class="part">
-        <div class="infos">
-          <div class="name"></div>
-          <div class="cpf"></div>
-        </div>
-
-        <div class="botoes">
-          <a class="botao-edit" onclick="">Editar</a>
-          <a href="../../services/delUserAction.php?id=<?= $users->getId()?>" class="botao-del"
-            onclick="return confirm('Tem certeza que deseja excluir?')">Deletar</a>
-        </div>
-
-      </div>
+   
 
 
     </div>
@@ -151,7 +137,7 @@
 
             <label>
               <h4>Tipo de usuario</h4>
-              <select name="isAdm">
+              <select id="role">
 
                 <option value="1">Administrador</option>
 
@@ -162,16 +148,16 @@
 
           <label>
             <h4>Senha</h4>
-            <input type="password" name="pass">
+            <input type="password" name="pass" id="pass">
           </label>
 
           <label>
             <h4>Confirmar Senha</h4>
-            <input type="password" name="confirmPass">
+            <input type="password" name="confirmPass" id="confirmPass">
           </label>
 
 
-          <input class="botao sub" type="submit">
+          <div class="botao sub" id="enviar-novo-employee">Enviar</div>
 
         </form>
       </div>
@@ -180,7 +166,7 @@
     <div class="modal-edit-user">
       <div class="container-title">
         <h3>Editar colaborador</h3>
-        <img onclick="newUser('edit', false)" src="../../../public/img/svgs/arrow_back.svg" alt="">
+        <img onclick="editUser()" src="../../../public/img/svgs/arrow_back.svg" alt="">
       </div>
 
       <div class="container-form">
@@ -206,52 +192,68 @@
             <label>
               <h4>Tipo de usuario</h4>
               <select id="isAdmEdit" name="isAdm">
-                <option value="1">Administrador</option>
-                <option value="0">Colaborador</option>
               </select>
             </label>
+           
           </div>
+          <br/>
+          <br/>
+          <label>
+            <h4>Senha do Administrador:</h4>
+            <input type="password" id="senhaAdm">
+          </label>
 
 
 
 
-          <input class="botao sub" type="submit">
+          <div class="botao sub" id="enviar-edit">Enviar</div>
 
         </form>
       </div>
     </div>
 
+    <div id="del-set" class="del-set">
+      <div class="header">
+        <h2>Tem certeza que deseja excluir?</h2>
+        <img onclick="deleteUser(false)" class="close-modal" src="../../../public/img/svgs/arrow_back.svg" alt="">
+      </div>
+
+      <div class="modal-container">
+        <form method="post">
+          <input type="hidden" name="tokenSet" id="tokenSet" value="">
+
+          <input type="password" name="senha" class="info" id="passDelUser" placeholder="Senha do usuário">
+
+
+
+          <span class='aviso' id="aviso-deleta-setor" style="display: none;">Verifique a senha ou o servidor.</span>
+
+
+          <div style="display: flex;">
+            <div style="margin-left: 8px; display: flex; justify-content: center;" id="del-confirma" class="button-enviar" >Sim</div>
+            <div style="margin-left: 8px; display: flex; justify-content: center;" class="button-enviar"
+              onclick="deleteUser(false)">Não</div>
+          </div>
+
+        </form>
+      </div>
+    </div>
+    
 
   </div>
 
 
+  <script src="./../../jsRequests/urlBase.js"></script>
+  <script src="./../../jsRequests/auth.js"></script>
+  <script src="./../../jsRequests/authManager.js"></script>
+  <script src="./../../jsRequests/participante/findAllEmployee.js"></script>
+  <script src="./../../jsRequests/participante/newEmployee.js"></script>
+  <script src="./../../jsRequests/participante/editEmployee.js"></script>
+  <script src="./../../jsRequests/participante/deleteEmployee.js"></script>
   <script src="../../../public/js/general/main.js"></script>
   <script src="../../../public/js/adm/participantes.js"></script>
 
-  <?php 
-            if(!empty($_SESSION['conteudo'])){
-                echo "<script>
-                    newUser('new', false)
-                    let recovery = {}
-        
-                    recovery.nome = '".$_SESSION['conteudo']['nome']."',
-                    recovery.email = '".$_SESSION['conteudo']['email']."',
-                    recovery.cpfCnpj = '".$_SESSION['conteudo']['cpfCnpj']."'
-                    
-                    const inputNome = document.getElementById('nome');
-                    const inputEmail = document.getElementById('email');
-                    const inputCpfCnpj = document.getElementById('cpfNew');
 
-                    inputNome.value = recovery.nome;
-                    inputEmail.value = recovery.email;
-                    inputCpfCnpj.value = recovery.cpfCnpj;
-
-                    </script>
-                    ";
-        
-                $_SESSION['conteudo'] = [];       
-            }
-    ?>
 
 </body>
 

@@ -23,7 +23,7 @@ public class RequestUpdateUserDTO {
     @NotEmpty(message = "Password cannot be null")
     private String passwordAuthorization;
     @NotEmpty(message = "Cpf cannot be null")
-    @Size(min = 11, message = "CPF must have at least 11 characters")
+    @Size(min = 11,max = 11, message = "CPF must have 11 characters")
     private String cpf;
     private Role role;
 }

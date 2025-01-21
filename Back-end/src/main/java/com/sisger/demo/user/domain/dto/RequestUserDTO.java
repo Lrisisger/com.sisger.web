@@ -21,7 +21,7 @@ public class RequestUserDTO {
     @Size(min = 8, message = "Password must have at least 8 characters")
     private String password;
     @NotEmpty(message = "Cpf cannot be null")
-    @Size(min = 11, message = "CPF must have at least 11 characters")
+    @Size(min = 11,max = 11, message = "CPF must have 11 characters")
     private String cpf;
 
     private Role role;

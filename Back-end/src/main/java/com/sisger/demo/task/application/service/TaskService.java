@@ -106,7 +106,7 @@ public class TaskService implements TaskServiceInterface{
     }
 
     @Override
-    public List<ResponseTaskFindByUserDTO> findAllTasksByUser(String userId, User manager) {
+    public List<ResponseTaskDTO> findAllTasksByUser(String userId, User manager) {
         log.info("[inicia] TaskService - findAllTasksByUser");
         List<Task> taskList = taskRepository.findAllByUserId(userId);
 
@@ -124,8 +124,8 @@ public class TaskService implements TaskServiceInterface{
             throw new NotFoundException("Tasks not found, verify the user Id");
 
 
-        List<ResponseTaskFindByUserDTO> responseTaskList = taskList.stream()
-                .map(task -> ResponseTaskFindByUserDTO.builder()
+        List<ResponseTaskDTO> responseTaskList = taskList.stream()
+                .map(task -> ResponseTaskDTO.builder()
                         .id(task.getId())
                         .title(task.getTitle())
                         .description(task.getDescription())
@@ -134,6 +134,7 @@ public class TaskService implements TaskServiceInterface{
                         .employeeMessage(task.getEmployeeMessage())
                         .status(task.getStatus())
                         .section(convertSectionToResponseDTO(task.getSection()))
+                        .employee(convertUserToResponseUserToTaskDTO(task.getUser()))
                         .build())
                 .toList();
 

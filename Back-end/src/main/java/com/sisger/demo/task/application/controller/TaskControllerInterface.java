@@ -19,7 +19,7 @@ public interface TaskControllerInterface {
             @RequestHeader(name = "Authorization", required = true) String token, @PathVariable String sectionId);
 
     @GetMapping("/find-by-user/{userId}")
-    ResponseEntity<List<ResponseTaskFindByUserDTO>> findAllTasksByUser(
+    ResponseEntity<List<ResponseTaskDTO>> findAllTasksByUser(
             @RequestHeader(name = "Authorization", required = true) String token, @PathVariable String userId);
 
     @GetMapping("/find-by-id/{id}")

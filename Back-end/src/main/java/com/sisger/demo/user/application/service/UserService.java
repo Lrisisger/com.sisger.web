@@ -175,6 +175,18 @@ public class UserService implements UserServiceInterface {
     }
 
     @Override
+    public ResponseUserDTO findByIdResponseDTO(String idResponseDTO, User manager) {
+        log.info("[inicia]  UserService - findByIdResponseDTO");
+        User user = userRepository.findById(idResponseDTO).orElseThrow(
+                () -> new NotFoundException("User not found, verify the id")
+        );
+
+        validateCompany(manager, user);
+        log.info("[fim]  UserService - findByIdResponseDTO");
+        return buildUserResponse(user);
+    }
+
+    @Override
     public ResponseUserDTO buildUserResponse(User user) {
         log.info("[inicia]  UserService - buildUserRequest");
         ResponseUserDTO usersByCompany =ResponseUserDTO.builder()
@@ -184,7 +196,6 @@ public class UserService implements UserServiceInterface {
                         .cpf(user.getCpf())
                         .role(user.getRole())
                         .company(companyService.findByIdToRequest(user.getCompany().getId()))
-                        .task(taskService.findAllTasksByUser(user.getId(), user))
                         .build();
         log.info("[fim]  UserService - buildUserRequest");
 
@@ -215,12 +226,12 @@ public class UserService implements UserServiceInterface {
     }
 
     private void buildUpdatedUser(User userToUpdate, RequestUpdateUserDTO requestUpdateUser){
-
+        log.info("[inicia]  UserService - buildUpdatedUser");
         userToUpdate.setEmail(requestUpdateUser.getEmail().toLowerCase());
         userToUpdate.setCpf(requestUpdateUser.getCpf());
         userToUpdate.setRole(requestUpdateUser.getRole());
         userToUpdate.setName(TextHandler.capitalizeFirstLetter(requestUpdateUser.getName()));
-
+        log.info("[fim]  UserService - buildUpdatedUser");
     }
 
 }

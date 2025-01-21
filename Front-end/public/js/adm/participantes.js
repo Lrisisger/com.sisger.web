@@ -1,25 +1,12 @@
 const modalNewPart = document.querySelector('.modal-new-user');
-const modalEditPart = document.querySelector('.modal-edit-user');
 const dark_screen = document.querySelector('.dark');
 const cpfNew = document.getElementById('cpfNew');
-const nameEdit = document.getElementById('nomeEdit');
-const emailEdit = document.getElementById('emailEdit');
-const cpfEdit = document.getElementById('cpfEdit');
-const isAdmEdit = document.getElementById('isAdmEdit');
-const tokenEdit = document.getElementById('tokenEdit');
 
+const modalEditPart = document.querySelector('.modal-edit-user');
 
-const newUser = (typeModal, id) =>{
+const newUser = () =>{
 
-    let modal = typeModal == 'new' ? modalNewPart : modalEditPart;
-    if(typeModal == 'edit' && id){
-        nameEdit.value = usuarios[`id${id}`].nome
-        emailEdit.value = usuarios[`id${id}`].email
-        cpfEdit.value = usuarios[`id${id}`].cpf
-        isAdmEdit.value = usuarios[`id${id}`].isAdm
-        tokenEdit.value = usuarios[`id${id}`].token
-
-    } 
+    let modal = modalNewPart;
    
     if(window.getComputedStyle (dark_screen).display == 'flex'){        
 
@@ -52,7 +39,3 @@ const newUser = (typeModal, id) =>{
 }
 
 
-
-cpfEdit.addEventListener('input', function() {
- console.log('adsa')
-});

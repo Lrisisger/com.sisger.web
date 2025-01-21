@@ -16,7 +16,7 @@ public interface TaskServiceInterface {
 
     List<ResponseTaskDTO> findAllTasksBySection(String sectionId, User manager);
 
-    List<ResponseTaskFindByUserDTO> findAllTasksByUser(String userId, User manager);
+    List<ResponseTaskDTO> findAllTasksByUser(String userId, User manager);
 
     ResponseTaskDTO save(RequestTaskDTO requestTaskDTOTask, User employee);
 

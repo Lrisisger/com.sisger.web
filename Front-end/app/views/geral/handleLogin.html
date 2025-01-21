@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SISGER</title>
+</head>
+
+<body>
+
+
+    <script src="../../jsRequests/urlBase.js"></script>
+    <script src="../../jsRequests/auth.js"></script>
+    <script>
+
+        const handleLogin = async () => {
+
+            
+            try {
+                const response = await fetch(`${url}/user/find-user-logged`, {
+                    method: 'GET',
+                    headers: {
+                        'Authorization': `Bearer ${token}`
+                    }
+                });
+
+
+                if (!response.ok) {
+                    throw new Error(`Erro: ${response.status}`);
+                }
+                const result = await response.json();
+
+                if(result.role == "EMPLOYEE"){
+                    window.location.assign("../worker/control_colabora.html");
+                }else{
+                    window.location.assign("../adm/control.html");
+                }
+            } catch (error) {
+                console.log(error)
+            }
+        }
+
+        handleLogin();
+
+    </script>
+</body>
+
+</html>

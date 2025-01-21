@@ -25,5 +25,7 @@ public interface UserServiceInterface {
 
     public void delete(RequestDeleteUserDTO requestDeleteUserDTO, User user);
 
+    public ResponseUserDTO findByIdResponseDTO(String idResponseDTO, User manager);
+
     public ResponseUserDTO buildUserResponse(User user);
 }

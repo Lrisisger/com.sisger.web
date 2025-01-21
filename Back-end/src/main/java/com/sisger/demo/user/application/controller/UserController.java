@@ -64,6 +64,18 @@ public class UserController implements UserControllerInterface{
     }
 
     @Override
+    public ResponseEntity<ResponseUserDTO> findById(String token, String id) {
+        log.info("[inicia]  UserController - findById");
+        var user = validateToken(token);
+        AuthorityChecker.requireManagerAuthority(user);
+        var employeeDTO = userService.findByIdResponseDTO(id, user);
+
+        log.info("[fim]  UserController - findById");
+
+        return ResponseEntity.ok().body(employeeDTO);
+    }
+
+    @Override
     public ResponseEntity<ResponseUserDTO> create(String token, RequestUserDTO requestUserDTO) {
         log.info("[inicia]  UserController - create");
         var user = validateToken(token);

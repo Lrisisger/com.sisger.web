@@ -25,6 +25,10 @@ public interface UserControllerInterface {
     @GetMapping(value = "find-user-logged")
     ResponseEntity<ResponseUserDTO> findUserLogged(@RequestHeader(name = "Authorization", required = true) String token);
 
+    @GetMapping(value = "find-user-id/{id}")
+    ResponseEntity<ResponseUserDTO> findById(@RequestHeader(name = "Authorization", required = true) String token,
+                                             @PathVariable String id);
+
     @PostMapping(value = "new-user")
     ResponseEntity<ResponseUserDTO> create(
             @RequestHeader(name = "Authorization", required = true) String token,

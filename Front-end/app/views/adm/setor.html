@@ -36,7 +36,7 @@
         <h3>Menu</h3>
       </li>
 
-      <a href="control.php">
+      <a href="control.html">
         <li>
           <div class="menu-button">
             <img style="height:30px;" src="../../../public/img/icons/central.svg" alt="">
@@ -46,7 +46,7 @@
         </li>
       </a>
 
-      <a href="../geral/conta.php">
+      <a href="../geral/conta.html">
         <li>
           <div class="menu-button">
             <img src="../../../public/img/icons/person.svg" alt="">
@@ -56,7 +56,7 @@
         </li>
       </a>
 
-      <a href="participantes.php">
+      <a href="participantes.html">
         <li>
           <div class="menu-button">
             <img style="height:30px;" src="../../../public/img/icons/people.svg" alt="">
@@ -66,8 +66,7 @@
         </li>
       </a>
 
-      <?php if($userInfo->getMainAcc() == 0): ?>
-      <a href="../worker/control_colabora.php">
+      <a href="../worker/control_colabora.html">
         <li>
           <div class="menu-button">
             <img style="height:30px;" src="../../../public/img/icons/tarefas.svg" alt="">
@@ -76,9 +75,8 @@
           <h3>Minhas Tarefas</h3>
         </li>
       </a>
-      <?php endif; ?>
 
-      <a href="../../services/logoutAction.php">
+      <a href="../geral/logout.html">
         <li>
           <div class="menu-button">
             <img src="../../../public/img/icons/logout.svg" alt="">
@@ -176,6 +174,7 @@
 
   <script src="./../../jsRequests/urlBase.js"></script>
   <script src="./../../jsRequests/auth.js"></script>
+  <script src="./../../jsRequests/authManager.js"></script>
   <script src="./../../jsRequests/section/findAllSection.js"></script>
   <script src="./../../jsRequests/section/novoSetor.js"></script>
   <script src="./../../jsRequests/section/editaSetor.js"></script>
