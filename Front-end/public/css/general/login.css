@@ -71,3 +71,45 @@ main {
     transition: 0.5s;
     cursor: pointer;
 }
+
+@media (max-width: 700px) {
+    main {
+        height: 100vh;
+        width: 100vw;
+        background-size: cover;
+        background-position: center;
+        padding: 20px; /* Adiciona espaço para melhor adaptação */
+    }
+
+    .logo-sec .logo-img {
+        width: 50vw; /* Ajusta a largura para telas menores */
+        height: auto;
+    }
+
+    .title-text {
+        font-size: 20px; /* Reduz um pouco para telas pequenas */
+        text-align: center;
+    }
+
+    .login-form {
+        width: 90%; /* Ocupa quase toda a largura */
+        padding: 12px;
+    }
+
+    .esqueceusenha {
+        justify-content: center; /* Centraliza o link */
+        font-size: 12px; /* Ajuste de tamanho */
+        margin-top: 10px;
+    }
+
+    .colab a {
+        font-size: 14px;
+    }
+
+    .btn button {
+        width: 100%; /* Ocupa toda a largura disponível */
+        max-width: 300px; /* Evita que fique muito largo */
+        height: 45px;
+        font-size: 14px;
+    }
+}
