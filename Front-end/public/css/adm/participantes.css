@@ -1,5 +1,7 @@
 /* CSS DA PÁGINA DE PARTICIPANTES */
-.avisa{
+
+/* Estilos gerais */
+.avisa {
     height: 20px;
     display: flex;
     align-items: center;
@@ -8,19 +10,19 @@
     color: red;
     background-color: #ffffff;
 }
-.container-add{
+
+.container-add {
     display: flex;
     width: 100%;
     height: 80px;
     align-items: center;
     justify-content: center;
-
 }
 
-.botao{
+.botao {
     background-color: #79c9ff;
     border: none;
-    border-radius: 10px;    
+    border-radius: 10px;
     height: 30px;
     width: 250px;
     color: #fff;
@@ -30,7 +32,7 @@
     justify-content: center;
 }
 
-.container-part{
+.container-part {
     display: flex;
     flex-direction: column;
     gap: 30px;
@@ -38,74 +40,76 @@
     justify-content: center;
 }
 
-.part{
+.part {
     display: flex;
     justify-content: space-between;
-    width: 960px;
+    width: 100%;
+    max-width: 960px;
+    padding: 0 20px; /* Adicionado padding para telas menores */
 }
 
-.infos{
+.infos {
     display: flex;
-    width: 600px;
-    gap: 30px;
+    width: 100%;
+    max-width: 600px;
+    gap: 10px; /* Reduzido o gap para telas menores */
     height: 40px;
 }
 
-.infos div{
+.infos div {
     width: 47.5%;
     border-radius: 10px;
     display: flex;
     align-items: center;
     padding: 10px;
-    color:   #9A9393;
-    background-color: #DBE0EA;;
+    color: #9A9393;
+    background-color: #DBE0EA;
 }
 
-.botoes{
+.botoes {
     display: flex;
-    width: 350px;
-    gap: 20px;
+    width: 100%;
+    max-width: 350px;
+    gap: 10px; /* Reduzido o gap para telas menores */
 }
 
-.botoes a{
+.botoes a {
     width: 45%;
-    font-size: 22px;
-    font: 800;
+    font-size: 16px; /* Reduzido o tamanho da fonte */
+    font-weight: 800;
     display: flex;
     justify-content: center;
     align-items: center;
     border-radius: 10px;
     cursor: pointer;
+    height: 40px; /* Altura fixa para os botões */
 }
 
-.botoes .botao-edit{
-   background-color: #4A7DFF;
-   color: #ebebeb;
+.botoes .botao-edit {
+    background-color: #4A7DFF;
+    color: #ebebeb;
 }
 
-
-.botoes .botao-del{
+.botoes .botao-del {
     background-color: #DB6363;
     color: #ebebeb;
 }
 
-.container-cpf-User{
-    display: flex;
-}
-
-.modal-new-user, .modal-edit-user{
-    width: 400px;
+/* Modais */
+.modal-new-user, .modal-edit-user {
+    width: 90%; /* Ajustado para telas menores */
+    max-width: 400px;
     border-radius: 15px;
     overflow: hidden;
     padding: 0;
-    height: 500px;
+    height: auto; /* Altura automática para telas menores */
     display: none;
     flex-direction: column;
 }
 
-.container-title{
+.container-title {
     height: 60px;
-    background-color:#626ABA ;
+    background-color: #626ABA;
     display: flex;
     color: #ebebeb;
     align-items: center;
@@ -113,29 +117,29 @@
     padding: 0 10px;
 }
 
-.container-title img{
+.container-title img {
     height: 25px;
     cursor: pointer;
 }
 
-.container-form{
+.container-form {
     background-color: #fff;
-    padding: 30px 0px 0px 15px;
+    padding: 20px;
     display: flex;
-    flex-direction: column;    
-    height: calc(100% - 60px);
+    flex-direction: column;
+    height: auto; /* Altura automática para telas menores */
 }
 
-.container-form label h4{
+.container-form label h4 {
     font-size: 16px;
     color: #716969;
     margin-left: 15px;
 }
 
-.container-form label input{
+.container-form label input {
     background-color: #DBE0EA;
     height: 37px;
-    width: 330px;
+    width: 100%; /* Largura total para telas menores */
     border-radius: 15px;
     padding: 0 10px;
     font-size: 17px;
@@ -144,7 +148,7 @@
     margin-bottom: 7px;
 }
 
-select{
+select {
     background-color: #DBE0EA;
     height: 37px;
     border-radius: 15px;
@@ -155,83 +159,39 @@ select{
     margin-bottom: 7px;
     margin-left: 10px;
 }
-.sub{
+
+.sub {
     margin-top: 30px;
     font-size: 20px;
 }
 
-/* - -- -- -- - -- ---*/
+/* Responsividade para telas menores */
+@media (max-width: 768px) {
+    .part {
+        flex-direction: column; /* Coluna em telas menores */
+        align-items: flex-start;
+        gap: 10px;
+    }
 
+    .infos {
+        width: 100%;
+        gap: 10px;
+    }
 
+    .botoes {
+        width: 100%;
+        justify-content: flex-start; /* Alinha os botões à esquerda */
+    }
 
-.header{
-    background-color: var(--default_blue);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    height: 50px;
-    color: #fff;
-    padding: 20px;
-}
-.modal-container{
-    padding: 20px;
-}
-.modal-container form{
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-}
-
-.modal-container .info{
-    background-color: #DBE0EA;
-    border: none;
-    margin-bottom: 20px;
-    height: 40px;
-    width: 80%;
-    border-radius: 15px;
-    padding: 20px;
-    font-size: 16px;
-
+    .botoes a {
+        width: 48%; /* Largura de 48% para os botões */
+        font-size: 14px; /* Fonte menor para telas menores */
+    }
 }
 
-.button-enviar{
-    border: none;
-    background-color: #4A7DFF;
-    color: #fff;
-    font: bold;
-    font-size: 20px;
-    height: 35px;
-    width: 200px;
-    border-radius: 15px;
-    margin-top: 20px;
-    cursor: pointer;
-    transition: .5s all;
-}
-
-.button-enviar:hover{
-    background-color: #95b1f8;
-}
-
-.close-modal{
-    cursor: pointer;
-}
-
-.del-set{
-    display: none;
-    flex-direction: column;
-    height: 200px;
-    width: 400px;
-    border-radius: 15px;
-    overflow: hidden;
-    background-color: #fff;
-}
-
-.del-set .header{
-    font-size: 12px;
-}
-
-.del-set .button-enviar{
-    height: 25px;
-    width: 80px;
+@media (max-width: 480px) {
+    .botoes a {
+        width: 100%; /* Largura total para os botões em celulares */
+        font-size: 12px; /* Fonte menor */
+    }
 }
