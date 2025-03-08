@@ -96,16 +96,16 @@
 }
 
 /* Modais */
-.modal-new-user, .modal-edit-user {
-    width: 90%; /* Ajustado para telas menores */
-    max-width: 400px;
+.modal-new-user, .modal-edit-user{
+    width: 400px;
     border-radius: 15px;
     overflow: hidden;
     padding: 0;
-    height: auto; /* Altura automática para telas menores */
+    height: 500px;
     display: none;
     flex-direction: column;
 }
+
 
 .container-title {
     height: 60px;
@@ -118,7 +118,7 @@
 }
 
 .container-title img {
-    height: 25px;
+    height: 30px;
     cursor: pointer;
 }
 
@@ -127,7 +127,7 @@
     padding: 20px;
     display: flex;
     flex-direction: column;
-    height: auto; /* Altura automática para telas menores */
+   
 }
 
 .container-form label h4 {
@@ -139,7 +139,6 @@
 .container-form label input {
     background-color: #DBE0EA;
     height: 37px;
-    width: 100%; /* Largura total para telas menores */
     border-radius: 15px;
     padding: 0 10px;
     font-size: 17px;
@@ -165,12 +164,91 @@ select {
     font-size: 20px;
 }
 
+.header{
+    background-color: var(--default_blue);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 50px;
+    color: #fff;
+    padding: 20px;
+}
+.modal-container{
+    padding: 20px;
+}
+.modal-container form{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.modal-container .info{
+    background-color: #DBE0EA;
+    border: none;
+    margin-bottom: 20px;
+    height: 40px;
+    width: 80%;
+    border-radius: 15px;
+    padding: 20px;
+    font-size: 16px;
+
+}
+
+.button-enviar{
+    border: none;
+    background-color: #4A7DFF;
+    color: #fff;
+    font: bold;
+    font-size: 20px;
+    height: 35px;
+    width: 200px;
+    border-radius: 15px;
+    margin-top: 20px;
+    cursor: pointer;
+    transition: .5s all;
+}
+
+.button-enviar:hover{
+    background-color: #95b1f8;
+}
+
+.close-modal{
+    cursor: pointer;
+}
+
+.del-set{
+    display: none;
+    flex-direction: column;
+    height: 200px;
+    width: 400px;
+    border-radius: 15px;
+    overflow: hidden;
+    background-color: #fff;
+}
+
+.del-set .header{
+    font-size: 12px;
+}
+
+.del-set .button-enviar{
+    height: 25px;
+    width: 80px;
+}
 /* Responsividade para telas menores */
 @media (max-width: 768px) {
     .part {
         flex-direction: column; /* Coluna em telas menores */
         align-items: flex-start;
         gap: 10px;
+    }
+
+    .part::after{
+        width: 90vw;
+        height: 5px;
+        background-color: #000;
+        margin:auto;
+        content: " ";
     }
 
     .infos {
@@ -193,5 +271,12 @@ select {
     .botoes a {
         width: 100%; /* Largura total para os botões em celulares */
         font-size: 12px; /* Fonte menor */
+    }
+
+    .part::after{
+        width: 90vw;
+        height: 0.5px;
+        background-color: #000;
+        margin:auto;
     }
 }

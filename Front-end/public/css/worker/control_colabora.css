@@ -75,6 +75,10 @@ textarea {
     padding: 8px;
 }
 
+.datas input {
+    width: 150px;
+}
+
 .status input {
     padding: 8px;
     color: #fff;
