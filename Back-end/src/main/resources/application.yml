@@ -3,9 +3,9 @@ spring:
     name: "lucas"
 
   datasource:
-    url: jdbc:mysql://localhost:3306/sisgerdb
-    username: root
-    password: ""
+    url: ${DATABASE_URL}
+    username: ${DATABASE_USERNAME}
+    password: ${DATABASE_PASSWORD}
     driver-class-name: com.mysql.cj.jdbc.Driver
     hikari:
       maximum-pool-size: 10

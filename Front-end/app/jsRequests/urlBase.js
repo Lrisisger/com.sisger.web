@@ -1,1 +1,1 @@
-const url = "http://localhost:8080/api";
+const url = "http://18.217.18.72/api";
